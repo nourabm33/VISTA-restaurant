@@ -157,7 +157,7 @@ export default async function MenuItemPage({ params }: PageProps<"/menu/[slug]">
             </div>
 
             <div className="mt-10">
-              <ArPlaceholder itemName={item.name} ar={item.ar} />
+              <ArPlaceholder item={item} />
             </div>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">

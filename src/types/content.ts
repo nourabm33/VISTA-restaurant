@@ -74,8 +74,12 @@ export interface ArAssets {
   arModel?: string;
   /** Optional poster/thumbnail for the 3D viewer. */
   poster?: string;
-  /** Whether the AR button should be shown once the feature ships. */
+  /** Whether the item exposes a 3D/AR experience. Requires `model3d`. */
   arEnabled: boolean;
+  /** Display name of the 3D object (defaults to the item name). */
+  title?: string;
+  /** Short copy shown next to the viewer (defaults to the item description). */
+  description?: string;
   /** Approximate real-world footprint in metres, used for surface placement. */
   scale?: { width: number; depth: number; height: number };
 }

@@ -4,3 +4,15 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/models/*.glb"
+  [headers.values]
+    Content-Type = "model/gltf-binary"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/models/*.usdz"
+  [headers.values]
+    Content-Type = "model/vnd.usdz+zip"
+    Cache-Control = "public, max-age=31536000, immutable"
