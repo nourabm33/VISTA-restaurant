@@ -25,7 +25,7 @@ export const restaurant: RestaurantInfo = {
     { label: "Instagram", href: "https://instagram.com" },
     { label: "Facebook", href: "https://facebook.com" },
   ],
-  siteUrl: "https://vista-restaurant.netlify.app",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://vista-restaurant.netlify.app",
   reservation: {
     minGuests: 1,
     maxGuests: 12,
