@@ -1,22 +1,40 @@
 import Link from "next/link";
-import type { ArAssets } from "@/types/content";
+import type { MenuItem } from "@/types/content";
+import { toArExperience } from "@/data/ar";
+import { ArViewer } from "./ArViewer";
 
 interface ArPlaceholderProps {
-  itemName: string;
-  ar: ArAssets;
+  item: MenuItem;
 }
 
 /**
- * Reserved area for the Phase 2 3D/AR viewer. In Phase 1 it only explains
- * what is coming; no camera, no fake 3D, no heavy dependencies.
+ * 3D/AR area of a menu detail page. Renders the real viewer when the item has
+ * a model; otherwise explains that this dish is not yet available in AR.
  */
-export function ArPlaceholder({ itemName, ar }: ArPlaceholderProps) {
+export function ArPlaceholder({ item }: ArPlaceholderProps) {
+  const experience = toArExperience(item);
+
+  if (experience) {
+    return (
+      <section aria-labelledby="ar-viewer-title" className="rounded-3xl border border-charcoal-900/10 bg-ivory-50 p-5 sm:p-6">
+        <p className="eyebrow">Realtà aumentata</p>
+        <h2 id="ar-viewer-title" className="display-serif mt-2 text-2xl sm:text-3xl">
+          Vedi {item.name} sul tuo tavolo
+        </h2>
+        <p className="mt-2 text-sm leading-relaxed text-charcoal-600">
+          Esplora il piatto in 3D oppure tocca “Prova in AR” da smartphone per posizionarlo, a grandezza reale, davanti a te.
+        </p>
+        <ArViewer experience={experience} variant="compact" className="mt-5" />
+        <Link href="/ar" className="mt-4 inline-block text-sm text-bronze-600 underline-offset-4 hover:underline">
+          Come funziona l&apos;esperienza AR
+        </Link>
+      </section>
+    );
+  }
+
   return (
     <section
       aria-labelledby="ar-placeholder-title"
-      data-ar-enabled={ar.arEnabled}
-      data-model-3d={ar.model3d}
-      data-ar-model={ar.arModel}
       className="relative overflow-hidden rounded-3xl bg-charcoal-900 p-6 text-ivory-50 sm:p-8"
     >
       <div
@@ -40,23 +58,20 @@ export function ArPlaceholder({ itemName, ar }: ArPlaceholderProps) {
           </svg>
         </div>
         <div className="flex-1">
-          <p className="eyebrow text-bronze-300">In arrivo · Fase 2</p>
+          <p className="eyebrow text-bronze-300">Realtà aumentata</p>
           <h2 id="ar-placeholder-title" className="display-serif mt-2 text-2xl sm:text-3xl">
-            Vedi {itemName} sul tuo tavolo
+            {item.name} non è ancora disponibile in AR
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-ivory-200/75">
-            Qui prenderà vita il visualizzatore 3D e in realtà aumentata: potrai vedere il piatto in
-            scala reale direttamente dal tuo smartphone, prima di ordinare.
+            Stiamo modellando i nostri piatti uno alla volta. Nel frattempo puoi provare l&apos;esperienza con il
+            piatto dimostrativo VISTA Signature.
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-3">
-            <span
-              aria-disabled="true"
-              className="inline-flex min-h-10 cursor-not-allowed items-center rounded-full border border-ivory-50/20 px-4 text-sm text-ivory-200/60"
+          <div className="mt-4">
+            <Link
+              href="/ar"
+              className="inline-flex min-h-11 items-center rounded-full border border-ivory-50/40 px-5 text-sm text-ivory-50 hover:bg-ivory-50 hover:text-charcoal-900"
             >
-              Visualizza in AR · presto disponibile
-            </span>
-            <Link href="/ar" className="text-sm text-bronze-300 underline-offset-4 hover:underline">
-              Scopri l&apos;esperienza AR
+              Prova il piatto dimostrativo in AR
             </Link>
           </div>
         </div>

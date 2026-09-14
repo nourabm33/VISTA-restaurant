@@ -27,7 +27,19 @@ const cocktailImg = (
 });
 
 /** AR placeholder: no models yet, but the item is a candidate for Phase 2. */
-const arReady = (enabled = false): ArAssets => ({ arEnabled: enabled });
+const arReady = (): ArAssets => ({ arEnabled: false });
+
+/** Phase 2 demo object: the only item with a real 3D/AR model for now. */
+const vistaSignatureAr: ArAssets = {
+  arEnabled: true,
+  title: "VISTA Signature — Contemporary Truffle Dish",
+  description:
+    "Risotto mantecato al Parmigiano con tartufo nero, scaglie di Parmigiano e olio al tartufo su piatto in ceramica smaltata da 27 cm.",
+  model3d: "/models/vista-signature-tartufo.glb",
+  arModel: "/models/vista-signature-tartufo.usdz",
+  poster: "/images/ar/vista-signature-tartufo-poster.webp",
+  scale: { width: 0.27, depth: 0.27, height: 0.05 },
+};
 
 export const menuItems: MenuItem[] = [
   // ─── Antipasti ────────────────────────────────────────────────────────────
@@ -45,7 +57,7 @@ export const menuItems: MenuItem[] = [
     allergens: ["molluschi"],
     tags: ["signature", "senza-glutine"],
     featured: true,
-    ar: arReady(true),
+    ar: arReady(),
   },
   {
     slug: "bruschetta-vista",
@@ -102,7 +114,7 @@ export const menuItems: MenuItem[] = [
     allergens: ["glutine", "uova", "latticini"],
     tags: ["signature"],
     featured: true,
-    ar: arReady(true),
+    ar: arReady(),
   },
   {
     slug: "risotto-parmigiano-tartufo",
@@ -118,7 +130,7 @@ export const menuItems: MenuItem[] = [
     allergens: ["latticini"],
     tags: ["signature", "vegetariano", "senza-glutine"],
     featured: true,
-    ar: arReady(true),
+    ar: vistaSignatureAr,
   },
   {
     slug: "pappardelle-ai-porcini",
@@ -175,7 +187,7 @@ export const menuItems: MenuItem[] = [
     allergens: ["latticini", "solfiti"],
     tags: ["signature", "senza-glutine"],
     featured: true,
-    ar: arReady(true),
+    ar: arReady(),
   },
   {
     slug: "salmone-scottato",
@@ -286,7 +298,7 @@ export const menuItems: MenuItem[] = [
     allergens: ["glutine", "latticini", "uova"],
     tags: ["signature", "vegetariano"],
     featured: true,
-    ar: arReady(true),
+    ar: arReady(),
   },
   {
     slug: "panna-cotta",
@@ -343,7 +355,7 @@ export const menuItems: MenuItem[] = [
     allergens: [],
     tags: ["signature"],
     featured: true,
-    ar: arReady(true),
+    ar: arReady(),
   },
   {
     slug: "passion-fruit-spritz",
@@ -359,7 +371,7 @@ export const menuItems: MenuItem[] = [
     allergens: ["solfiti"],
     tags: ["signature", "novita"],
     featured: true,
-    ar: arReady(true),
+    ar: arReady(),
   },
   {
     slug: "espresso-martini",
@@ -375,7 +387,7 @@ export const menuItems: MenuItem[] = [
     allergens: [],
     tags: ["signature"],
     featured: true,
-    ar: arReady(true),
+    ar: arReady(),
   },
   {
     slug: "gin-tonic-botanico",

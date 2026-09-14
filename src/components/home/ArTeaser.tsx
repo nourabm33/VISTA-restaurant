@@ -18,13 +18,13 @@ export function ArTeaser() {
         <div>
           <SectionHeading
             id="ar-teaser-title"
-            eyebrow="Prossimamente"
+            eyebrow="Realtà aumentata"
             title={
               <>
                 Il menu che si vede <em className="text-bronze-600">prima di assaggiare</em>
               </>
             }
-            description="Stiamo preparando un'esperienza in realtà aumentata: potrai visualizzare piatti e cocktail in 3D, in scala reale, direttamente sul tuo tavolo. Nessuna app da installare."
+            description="Prova il nostro piatto dimostrativo in realtà aumentata: lo vedi in 3D, in scala reale, direttamente sul tuo tavolo. Nessuna app da installare."
           />
           <ol className="mt-10 space-y-6">
             {steps.map((step) => (
@@ -38,7 +38,7 @@ export function ArTeaser() {
             ))}
           </ol>
           <ButtonLink href="/ar" variant="secondary" className="mt-10">
-            Scopri l&apos;esperienza AR
+            Prova in AR
           </ButtonLink>
         </div>
 
