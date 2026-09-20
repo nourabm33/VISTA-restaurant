@@ -52,6 +52,17 @@ const pancakeStackAr: ArAssets = {
   scale: { width: 0.26, depth: 0.24, height: 0.08 },
 };
 
+const mezzeManicheAr: ArAssets = {
+  arEnabled: true,
+  title: "Mezze Maniche al Pomodoro",
+  description:
+    "Scansione 3D del piatto reale: mezze maniche rigate mantecate in salsa di pomodoro, servite su piatto fondo in ceramica bianca da 26 cm.",
+  model3d: "/models/vista-pasta.glb",
+  arModel: "/models/vista-pasta.usdz",
+  poster: "/images/ar/vista-pasta-poster.webp",
+  scale: { width: 0.26, depth: 0.25, height: 0.05 },
+};
+
 export const menuItems: MenuItem[] = [
   // ─── Antipasti ────────────────────────────────────────────────────────────
   {
@@ -168,6 +179,21 @@ export const menuItems: MenuItem[] = [
     allergens: ["glutine", "latticini"],
     tags: ["vegetariano"],
     ar: arReady(),
+  },
+  {
+    slug: "mezze-maniche-pomodoro",
+    name: "Mezze Maniche al Pomodoro",
+    description: "Mezze maniche rigate, salsa di pomodoro fresco, basilico, olio EVO.",
+    story:
+      "Mezze maniche trafilate al bronzo, cotte al dente e mantecate in una salsa di pomodoro fresco ridotta lentamente. Il piatto che vedi in 3D è la scansione del piatto reale servito in sala.",
+    price: 14,
+    currency: "EUR",
+    category: "primi",
+    image: img("mezze-maniche-pomodoro", "Mezze maniche al pomodoro su piatto bianco", 1200, 1600),
+    ingredients: ["Mezze maniche rigate", "Pomodoro fresco", "Basilico", "Aglio", "Olio EVO"],
+    allergens: ["glutine"],
+    tags: ["vegetariano", "novita"],
+    ar: mezzeManicheAr,
   },
   {
     slug: "vellutata-di-piselli",
