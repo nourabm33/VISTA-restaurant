@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { arSupport, featuredArExperience } from "@/data/ar";
+import { arExperiences, arSupport, featuredArExperience } from "@/data/ar";
 import { restaurant } from "@/data/restaurant";
 import { ArViewer } from "@/components/ar/ArViewer";
 import { ButtonLink } from "@/components/ui/Button";
@@ -34,6 +34,7 @@ const steps = [
 
 export default function ArPage() {
   const experience = featuredArExperience;
+  const otherExperiences = arExperiences.filter((exp) => exp.id !== experience?.id && exp.menuSlug);
 
   return (
     <>
@@ -88,6 +89,23 @@ export default function ArPage() {
                   >
                     Vai alla scheda del piatto →
                   </Link>
+                ) : null}
+                {otherExperiences.length > 0 ? (
+                  <div className="mt-8 border-t border-charcoal-900/10 pt-6">
+                    <p className="eyebrow">Altri piatti in AR</p>
+                    <ul className="mt-3 space-y-2">
+                      {otherExperiences.map((exp) => (
+                        <li key={exp.id}>
+                          <Link
+                            href={`/menu/${exp.menuSlug}`}
+                            className="inline-flex min-h-11 items-center text-sm font-medium text-charcoal-900 underline-offset-4 hover:text-bronze-600 hover:underline"
+                          >
+                            {exp.title} →
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ) : null}
               </div>
             </div>
