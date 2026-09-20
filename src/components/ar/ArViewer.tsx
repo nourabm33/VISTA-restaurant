@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { ModelViewerElement } from "@google/model-viewer";
 import { arMessages, type ArExperience } from "@/data/ar";
 import { Button } from "@/components/ui/Button";
+import { withBasePath } from "@/lib/base-path";
 
 type LibraryStatus = "loading" | "ready" | "failed";
 type ModelStatus = "loading" | "loaded" | "error";
@@ -97,9 +98,9 @@ export function ArViewer({ experience, variant = "hero", className = "" }: ArVie
           <model-viewer
             key={attempt}
             ref={viewerRef}
-            src={attempt === 0 ? experience.modelSrc : `${experience.modelSrc}?retry=${attempt}`}
-            ios-src={experience.iosSrc}
-            poster={experience.poster}
+            src={withBasePath(attempt === 0 ? experience.modelSrc : `${experience.modelSrc}?retry=${attempt}`)}
+            ios-src={experience.iosSrc && withBasePath(experience.iosSrc)}
+            poster={experience.poster && withBasePath(experience.poster)}
             alt={experience.posterAlt}
             ar
             ar-modes={AR_MODES}
