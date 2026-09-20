@@ -41,6 +41,17 @@ const vistaSignatureAr: ArAssets = {
   scale: { width: 0.27, depth: 0.27, height: 0.05 },
 };
 
+const pancakeStackAr: ArAssets = {
+  arEnabled: true,
+  title: "Pancake Stack ai Frutti Rossi",
+  description:
+    "Tre pancake soffici farciti con crema e fragole, coperti da yogurt e coulis di fragole a righe, con mirtilli freschi, su piatto in ceramica da 26 cm.",
+  model3d: "/models/vista-pancakes.glb",
+  arModel: "/models/vista-pancakes.usdz",
+  poster: "/images/ar/vista-pancakes-poster.webp",
+  scale: { width: 0.26, depth: 0.24, height: 0.08 },
+};
+
 export const menuItems: MenuItem[] = [
   // ─── Antipasti ────────────────────────────────────────────────────────────
   {
@@ -299,6 +310,28 @@ export const menuItems: MenuItem[] = [
     tags: ["signature", "vegetariano"],
     featured: true,
     ar: arReady(),
+  },
+  {
+    slug: "pancake-stack",
+    name: "Pancake Stack ai Frutti Rossi",
+    description: "Tre pancake soffici, crema, fragole fresche, yogurt, coulis di fragole, mirtilli.",
+    story:
+      "Una torre di tre pancake cotti al momento, farciti con crema e fragole a pezzi e coperti da uno strato di yogurt greco rigato con coulis di fragole. Mirtilli freschi a completare.",
+    price: 12,
+    currency: "EUR",
+    category: "dessert",
+    image: {
+      src: "/images/menu/pancake-stack.webp",
+      alt: "Torre di tre pancake con yogurt, righe di coulis di fragole e mirtilli",
+      width: 1200,
+      height: 1600,
+      credit: "VISTA",
+    },
+    ingredients: ["Pancake", "Crema", "Fragole", "Yogurt greco", "Coulis di fragole", "Mirtilli"],
+    allergens: ["glutine", "latticini", "uova"],
+    tags: ["signature", "vegetariano"],
+    featured: true,
+    ar: pancakeStackAr,
   },
   {
     slug: "panna-cotta",
